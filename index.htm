@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GrowSmart: Hydroponic Farming Education</title>
+    <style>
+        :root {
+            --primary: #2e7d32;
+            --primary-light: #60ad5e;
+            --primary-dark: #005005;
+            --secondary: #1565c0;
+            --accent: #ffb300;
+            --text: #212121;
+            --text-light: #757575;
+            --background: #f5f5f5;
+            --card: #ffffff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--background);
+            color: var(--text);
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 1rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 1rem;
+            background-color: var(--primary-dark);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav li {
+            margin: 0 1rem;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+        
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 3rem 1rem;
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5)), url('/api/placeholder/1200/500') center/cover no-repeat;
+            color: white;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--accent);
+            color: var(--text);
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 1rem;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #ffa000;
+        }
+        
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .card {
+            background-color: var(--card);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .card-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .card-content {
+            padding: 1.5rem;
+        }
+        
+        .card h3 {
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+        
+        .calculator {
+            background-color: var(--card);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+        
+        .calculator h2 {
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        input, select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        
+        .results {
+            background-color: var(--primary-light);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 4px;
+            margin-top: 1.5rem;
+        }
+        
+        .community {
+            background-color: var(--card);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+        
+        footer {
+            background-color: var(--primary-dark);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            nav {
+                flex-direction: column;
+                padding: 1rem;
+            }
+            
+            nav ul {
+                margin-top: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav li {
+                margin: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>GrowSmart</h1>
+        <p>Modern Farming Education for Everyone</p>
+    </header>
+    
+    <nav>
+        <div class="logo">GrowSmart</div>
+        <ul>
+            <li><a href="#learn">Learn</a></li>
+            <li><a href="#calculator">Calculator</a></li>
+            <li><a href="#community">Community</a></li>
+            <li><a href="#resources">Resources</a></li>
+        </ul>
+    </nav>
+    
+    <div class="container">
+        <section class="hero">
+            <h1>Sustainable Farming for a Better Future</h1>
+            <p>Learn hydroponic farming techniques to grow more food with less water and space.</p>
+            <a href="#learn" class="btn">Start Learning</a>
+        </section>
+        
+        <section id="learn">
+            <h2>Learn Hydroponic Farming</h2>
+            <p>Hydroponics is a way to grow plants without soil, using mineral nutrient solutions in water. It's perfect for areas with limited space or poor soil conditions.</p>
+            
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-img" style="background-image: url('/api/placeholder/400/200')"></div>
+                    <div class="card-content">
+                        <h3>Beginner's Guide</h3>
+                        <p>Learn the basics of hydroponic farming and how to set up your first system.</p>
+                        <a href="#" class="btn">View Guide</a>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-img" style="background-image: url('/api/placeholder/400/200')"></div>
+                    <div class="card-content">
+                        <h3>System Types</h3>
+                        <p>Explore different hydroponic systems including DWC, NFT, and ebb & flow.</p>
+                        <a href="#" class="btn">Explore Systems</a>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-img" style="background-image: url('/api/placeholder/400/200')"></div>
+                    <div class="card-content">
+                        <h3>Plant Nutrition</h3>
+                        <p>Understand plant nutrients, pH levels, and how to keep your plants healthy.</p>
+                        <a href="#" class="btn">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="calculator" class="calculator">
+            <h2>Hydroponic Calculator</h2>
+            <p>Our calculator, powered by Wolfram technology, helps you determine the optimal nutrient solution and growing conditions for your plants.</p>
+            
+            <form id="calc-form">
+                <div class="form-group">
+                    <label for="plant-type">Plant Type</label>
+                    <select id="plant-type">
+                        <option value="">Select a plant</option>
+                        <option value="lettuce">Lettuce</option>
+                        <option value="tomato">Tomatoes</option>
+                        <option value="cucumber">Cucumbers</option>
+                        <option value="strawberry">Strawberries</option>
+                        <option value="herbs">Herbs</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="system-type">System Type</label>
+                    <select id="system-type">
+                        <option value="">Select a system</option>
+                        <option value="dwc">Deep Water Culture (DWC)</option>
+                        <option value="nft">Nutrient Film Technique (NFT)</option>
+                        <option value="drip">Drip System</option>
+                        <option value="ebb-flow">Ebb & Flow</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="water-volume">Water Volume (Liters)</label>
+                    <input type="number" id="water-volume" min="1">
+                </div>
+                
+                <div class="form-group">
+                    <label for="ph-level">Current pH Level</label>
+                    <input type="number" id="ph-level" min="0" max="14" step="0.1">
+                </div>
+                
+                <div class="form-group">
+                    <label for="ec-level">Current EC Level (mS/cm)</label>
+                    <input type="number" id="ec-level" min="0" step="0.1">
+                </div>
+                
+                <button type="button" class="btn" onclick="calculateNutrients()">Calculate</button>
+                
+                <div id="calculator-results" class="results" style="display: none;">
+                    <h3>Recommendations</h3>
+                    <div id="results-content"></div>
+                </div>
+            </form>
+        </section>
+        
+        <section id="community" class="community">
+            <h2>Community & Support</h2>
+            <p>Connect with other hydroponic farmers in your area and get support from our experts.</p>
+            
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-img" style="background-image: url('/api/placeholder/400/200')"></div>
+                    <div class="card-content">
+                        <h3>Local Workshops</h3>
+                        <p>Find hands-on workshops in your community to learn from experienced farmers.</p>
+                        <a href="#" class="btn">Find Workshops</a>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-img" style="background-image: url('/api/placeholder/400/200')"></div>
+                    <div class="card-content">
+                        <h3>Success Stories</h3>
+                        <p>Read stories from farmers who transformed their communities with hydroponic farming.</p>
+                        <a href="#" class="btn">Read Stories</a>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-img" style="background-image: url('/api/placeholder/400/200')"></div>
+                    <div class="card-content">
+                        <h3>Ask an Expert</h3>
+                        <p>Submit your questions to our panel of hydroponic farming experts.</p>
+                        <a href="#" class="btn">Ask a Question</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="resources">
+            <h2>Resources for Underserved Communities</h2>
+            <p>We're committed to making hydroponic farming accessible to everyone, especially in areas with limited resources.</p>
+            
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-img" style="background-image: url('/api/placeholder/400/200')"></div>
+                    <div class="card-content">
+                        <h3>Low-Cost Systems</h3>
+                        <p>Learn how to build effective hydroponic systems using affordable, locally available materials.</p>
+                        <a href="#" class="btn">View Guides</a>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-img" style="background-image: url('/api/placeholder/400/200')"></div>
+                    <div class="card-content">
+                        <h3>Grant Programs</h3>
+                        <p>Find information about grants and funding opportunities for community farming projects.</p>
+                        <a href="#" class="btn">Explore Programs</a>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-img" style="background-image: url('/api/placeholder/400/200')"></div>
+                    <div class="card-content">
+                        <h3>Offline Resources</h3>
+                        <p>Access printable guides and resources for areas with limited internet connectivity.</p>
+                        <a href="#" class="btn">Download PDF</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>© 2025 GrowSmart. All rights reserved.</p>
+            <p>Created to empower communities through sustainable farming education.</p>
+        </div>
+    </footer>
+    
+    <script>
+        function calculateNutrients() {
+            // This function would normally call the Wolfram API
+            // For demo purposes, we'll just show a sample result
+            
+            const plantType = document.getElementById('plant-type').value;
+            const systemType = document.getElementById('system-type').value;
+            const waterVolume = document.getElementById('water-volume').value;
+            const phLevel = document.getElementById('ph-level').value;
+            const ecLevel = document.getElementById('ec-level').value;
+            
+            if (!plantType || !systemType || !waterVolume || !phLevel || !ecLevel) {
+                alert('Please fill in all fields');
+                return;
+            }
+            
+            const resultsDiv = document.getElementById('calculator-results');
+            const resultsContent = document.getElementById('results-content');
+            
+            // Sample recommendations based on input
+            // In a real app, this would come from Wolfram API calculations
+            let recommendations = '';
+            
+            if (plantType === 'lettuce') {
+                recommendations = `
+                    <p><strong>Optimal pH:</strong> 5.5-6.5 (${phLevel < 5.5 ? 'Increase' : phLevel > 6.5 ? 'Decrease' : 'Maintain'} current pH)</p>
+                    <p><strong>Optimal EC:</strong> 0.8-1.2 mS/cm (${ecLevel < 0.8 ? 'Increase' : ecLevel > 1.2 ? 'Decrease' : 'Maintain'} current EC)</p>
+                    <p><strong>Nutrient Solution:</strong> For ${waterVolume} liters of water:</p>
+                    <ul>
+                        <li>Calcium Nitrate: ${(waterVolume * 0.6).toFixed(1)} grams</li>
+                        <li>Potassium Nitrate: ${(waterVolume * 0.3).toFixed(1)} grams</li>
+                        <li>Magnesium Sulfate: ${(waterVolume * 0.4).toFixed(1)} grams</li>
+                        <li>Monopotassium Phosphate: ${(waterVolume * 0.2).toFixed(1)} grams</li>
+                        <li>Micronutrients: ${(waterVolume * 0.1).toFixed(1)} grams</li>
+                    </ul>
+                    <p><strong>Light Exposure:</strong> 12-16 hours daily</p>
+                    <p><strong>Water Temperature:</strong> 18-22°C (65-72°F)</p>
+                `;
+            } else if (plantType === 'tomato') {
+                recommendations = `
+                    <p><strong>Optimal pH:</strong> 5.8-6.3 (${phLevel < 5.8 ? 'Increase' : phLevel > 6.3 ? 'Decrease' : 'Maintain'} current pH)</p>
+                    <p><strong>Optimal EC:</strong> 2.0-3.5 mS/cm (${ecLevel < 2.0 ? 'Increase' : ecLevel > 3.5 ? 'Decrease' : 'Maintain'} current EC)</p>
+                    <p><strong>Nutrient Solution:</strong> For ${waterVolume} liters of water:</p>
+                    <ul>
+                        <li>Calcium Nitrate: ${(waterVolume * 1.0).toFixed(1)} grams</li>
+                        <li>Potassium Nitrate: ${(waterVolume * 0.7).toFixed(1)} grams</li>
+                        <li>Magnesium Sulfate: ${(waterVolume * 0.5).toFixed(1)} grams</li>
+                        <li>Monopotassium Phosphate: ${(waterVolume * 0.3).toFixed(1)} grams</li>
+                        <li>Micronutrients: ${(waterVolume * 0.1).toFixed(1)} grams</li>
+                    </ul>
+                    <p><strong>Light Exposure:</strong> 14-18 hours daily</p>
+                    <p><strong>Water Temperature:</strong> 20-24°C (68-75°F)</p>
+                `;
+            } else {
+                recommendations = `
+                    <p>Please contact our experts for detailed recommendations for ${plantType} in a ${systemType} system.</p>
+                    <p>General guidelines:</p>
+                    <ul>
+                        <li>Monitor pH daily and adjust as needed</li>
+                        <li>Change nutrient solution every 1-2 weeks</li>
+                        <li>Keep water temperature between 18-26°C (65-78°F)</li>
+                    </ul>
+                `;
+            }
+            
+            resultsContent.innerHTML = recommendations;
+            resultsDiv.style.display = 'block';
+        }
+    </script>
+</body>
+</html>
+
+
